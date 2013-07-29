@@ -6,7 +6,7 @@
 #
 
 # gambit-c version
-MY_VERSION=4.6.6
+MY_VERSION=4.7.0
 MY_ANDROID_ROOT=/home/daniel/programas/android-ndk/
 
 # THIS script replace 2 files while building gambit because they are TOO OLD:
@@ -92,7 +92,7 @@ compile_for_arch()
     export CC=${TARGET}-gcc
     export CXX=${TARGET}-g++
 
-    ./configure  --prefix=${MY_BUILD_DIR}  --target=${TARGET} --host=${TARGET}  CC=${CC} CPPFLAGS="-DANDROID -I$INCLUDES -fno-short-enums" --enable-gcc-opts  CFLAGS="-DANDROID -fno-short-enums -I$INCLUDES -nostdlib -fPIC" LDFLAGS="-Wl,-rpath-link=$LIBS -L$LIBS" LIBS="-lc -ldl" >>${LOG_FILE} 2>&1
+    ./configure  --prefix=${MY_BUILD_DIR}  --target=${TARGET} --host=${TARGET}  CC=${CC} CPPFLAGS="-DANDROID -I$INCLUDES -fno-short-enums" --enable-single-host --enable-c-opt --enable-gcc-opts  CFLAGS="-DANDROID -fno-short-enums -I$INCLUDES -nostdlib -fPIC" LDFLAGS="-Wl,-rpath-link=$LIBS -L$LIBS" LIBS="-lc -ldl" >>${LOG_FILE} 2>&1
     cd lib
     make  >>${LOG_FILE} 2>&1
     cd ..
